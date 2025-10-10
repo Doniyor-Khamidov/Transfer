@@ -8,7 +8,7 @@
         <div class="clubs">
           {% for club in clubs %}
               <div class="club">
-                <a href="#">
+                <a href="/clubs/{{ club.id}}">
                   <img src="{{ club.logo.url }}" alt="" />
                   {{ club.name }}
                 </a>
