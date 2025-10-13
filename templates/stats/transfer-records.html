@@ -26,7 +26,7 @@
         <table class="top-players" style="margin-top: 100px">
           {% for transfer in transfers %}
             <tr>
-              <td>{{ forloop.counter }} </td>
+              <td>{{ forloop.counter }}. </td>
               <td>{{ transfer.player.name }}</td>
               <td>{{ transfer.old_club.name }}</td>
               <td>{{ transfer.new_club.name }}</td>
