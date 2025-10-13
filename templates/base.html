@@ -70,7 +70,7 @@
           <div><a href="/players/">PLAYERS</a></div>
           <div><a href="/U_20_players/">U-20 PLAYERS</a></div>
           <div><a href="/tryouts/">TRYOUTS</a></div>
-          <div><a href="stats.html">STATS</a></div>
+          <div><a href="/stats/">STATS</a></div>
           <div><a href="/about/">ABOUT US</a></div>
         </div>
       </div>
@@ -78,22 +78,16 @@
         <h2 id="title">Clubs by country</h2>
         <div class="country">
           <div>
-            <h3><a href="./countries/england.html">England</a> <br /></h3>
-            <h3><a href="./countries/italy.html">Italy</a> <br /></h3>
-            <h3><a href="./countries/france.html">France</a> <br /></h3>
-            <h3>
-              <a href="./countries/netherlands.html">Netherlands</a> <br />
-            </h3>
-            <h3><a href="./countries/ukraine.html">Ukraine</a> <br /></h3>
-            <h3><a href="./countries/argentina.html">Argentina</a> <br /></h3>
+            {% for country in countries|slice:":5" %}
+              <h3><a href="{% url 'clubs' %}?country={{ country.id }}">{{ country.name }}</a> <br /></h3>
+            {%  endfor %}
+
           </div>
           <div>
-            <h3><a href="./countries/spain.html">Spain</a> <br /></h3>
-            <h3><a href="./countries/germany.html">Germany</a> <br /></h3>
-            <h3><a href="./countries/portugal.html">Portugal</a> <br /></h3>
-            <h3><a href="./countries/brazil.html">Brazil</a> <br /></h3>
-            <h3><a href="./countries/russia.html">Russia</a> <br /></h3>
-            <h3><a href="./countries/other.html">Other</a> <br /></h3>
+            {% for country in countries|slice:"5:" %}
+              <h3><a href="{% url 'clubs' %}?country={{ country.id }}">{{ country.name }}</a> <br /></h3>
+            {%  endfor %}
+            <h3><a href="{% url 'clubs' %}">Barchasi</a> <br /></h3>
           </div>
         </div>
       </div>

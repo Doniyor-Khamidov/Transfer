@@ -9,20 +9,16 @@ def home_view(request):
 
 def clubs_view(request):
     clubs = Club.objects.all()
+
+    country_query = request.GET.get('country')
+    if country_query:
+        clubs = clubs.filter(country__id=country_query)
+
     context = {
         'clubs': clubs
     }
     return render(request, 'clubs.html', context)
 
-def latest_transfers_view(request):
-    last_season= Season.objects.order_by('name').last()
-    transfers = Transfer.objects.filter(season=last_season).order_by('-price')
-    context = {
-        'transfers': transfers,
-        'last_season': last_season
-
-    }
-    return render(request, 'latest-transfers.html', context)
 
 def players_view(request):
     players = Player.objects.order_by('-price')
