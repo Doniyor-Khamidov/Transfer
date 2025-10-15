@@ -1,33 +1,40 @@
 {% extends 'base.html' %}
 
 {% block content %}
-      <div class="nav">
-          <h2>– TOP-50 CLUBS BY EXPENDITURE IN 2020/21 –</h2>
-          <table class="content-nav">
-            <thead>
-              <tr>
-                <td>#player</td>
-                <td></td>
-                <td></td>
-                <td>
-                  expenditures, mill. euro
-                </td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      <div class="latest-transfers">
-        
-        <table class="top-players" style="margin-top: 100px">
+  <div class="nav">
+      <h2>– TOP-50 CLUBS BY EXPENDITURE IN 2025 –</h2>
+      <table class="content-nav">
+        <thead>
           <tr>
-            <td style="width: 150px !important;">1 Chelsea FC</td>
-            <td style="border: none">.....</td>
-            <td style="border: none">.....</td>
-            <td style="border: none">.....</td>
-            <td>17/18</td>
+            <td>#</td>
+            <td>Club</td>
+            <td></td>
+            <td>Total Expenditures (million €)</td>
           </tr>
-        </table>
-        <hr>
-        <p>It is a list of the most expensive transfers of all time. The minimum transfer value is 50 million euro.</p>
-      </div>
+        </thead>
+      </table>
+  </div>
+
+  <div class="latest-transfers">
+    <table class="top-players" style="margin-top: 100px">
+      {% for club in clubs %}
+      <tr>
+        <td style="width: 150px !important;">{{ forloop.counter }}</td>
+        <td>{{ club.new_club__name }}</td>
+        <td style="border: none">.....</td>
+        <td style="border: none">.....</td>
+        <td>{{ club.total_spent|floatformat:2 }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No data available</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <hr>
+    <p>
+      This list shows the top 50 clubs with the highest total expenditures in 2025 season.
+    </p>
+  </div>
 {% endblock %}
